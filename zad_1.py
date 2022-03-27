@@ -38,17 +38,9 @@ def stem_text(text: str) -> str:
 def clear_short_words(text):
     return " ".join(word for word in text.split() if len(word)>=3)
 
-string = """Lorem ipsum dolor :) sit amet, consectetur; adipiscing elit. Sed eget mattis sem. ;)
-Mauris ;( egestas erat quam, :< ut faucibus eros congue :> et. In blandit, mi eu porta;
-lobortis, tortor :-) nisl facilisis leo, at ;< tristique augue risus eu risus ;-). Lorem ipsum dolor
-sit amet, consectetur adipiscing elit. Sed #texting eget mattis sem. Mauris #frasista
-egestas erat #tweetext quam, ut faucibus eros #frasier congue et. In blandit, mi eu porta
-lobortis, tortor nisl facilisis leo, at tristique #frasistas augue risus eu risus."""
+df = pandas.read_csv('News_dataset/True.csv', usecols=['title', 'text'])
 
-df = pandas.read_csv('News_dataset/Fake.csv')
-df.head()
+vectorizer = CountVectorizer(tokenizer=text_tokenizer)
+X_transform = vectorizer.fit_transform(df['title'])
 
-#vectorizer = CountVectorizer(tokenizer=text_tokenizer)
-#X_transform = vectorizer.fit_transform(df.split())
-
-#print(X_transform.toarray())
+print(X_transform.toarray())
