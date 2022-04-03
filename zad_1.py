@@ -11,7 +11,7 @@ def text_tokenizer(text):
     text = stem_text(text)
     text = clear_stopwords(text)
     text = clear_short_words(text)
-    return(text)
+    return text.split()
 
 def clear_text(text):
     text = re.sub(r'[.,]', '', text)
@@ -44,3 +44,5 @@ vectorizer = CountVectorizer(tokenizer=text_tokenizer)
 X_transform = vectorizer.fit_transform(df['title'])
 
 print(X_transform.toarray())
+print('----------------------------')
+print(vectorizer.get_feature_names_out())
