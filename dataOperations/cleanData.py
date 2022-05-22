@@ -6,8 +6,7 @@ from nltk.corpus import stopwords
 
 def clean_data(df: pd.DataFrame):
     for index, row in df.iterrows():
-        text_tokenizer(row[2])
-        df.at[index,'text'] = ' '.join(text_tokenizer(row[2]))
+        df.at[index,'verified_reviews'] = ' '.join(text_tokenizer(row[3]))
     return df
 
 

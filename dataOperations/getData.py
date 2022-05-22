@@ -1,8 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-def get_data(path: str) -> pd.DataFrame:
-    return pd.read_csv(path).head(1000).dropna()
+def get_data(path: str, rows: int = 10000) -> pd.DataFrame:
+    return pd.read_csv(path, sep=";", encoding='cp1252').head(rows).dropna()
 
 def split_dataset(X_data: pd.DataFrame, y_data: pd.DataFrame):
     X_train, X_test, y_train, y_test = train_test_split(X_data.values, y_data.values, test_size=0.3, random_state=0)
