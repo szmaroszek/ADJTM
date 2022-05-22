@@ -1,8 +1,10 @@
 import pandas as pd
 import re
-from nltk import SnowballStemmer, word_tokenize, PorterStemmer
+from nltk import word_tokenize, PorterStemmer
 from nltk.corpus import stopwords
 
+def clean_data_string(text: str):
+    return text_tokenizer(text)
 
 def clean_data(df: pd.DataFrame):
     for index, row in df.iterrows():
